@@ -11,6 +11,10 @@ CORS(app)
 UPLOAD_FOLDER = 'uploads'
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
+@app.route('/')
+def index():
+    return "Flask backend is working!"
+
 @app.route('/analyze', methods=['POST'])
 def analyze():
     file = request.files['image']
@@ -23,5 +27,5 @@ def analyze():
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0", debug=True, port=port)
+    app.run(host="0.0.0.0", port=port)
 
